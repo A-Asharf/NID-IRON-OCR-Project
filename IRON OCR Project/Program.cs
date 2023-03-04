@@ -20,17 +20,18 @@ using (var ocrInput = new OcrInput("../../../Images/ID-Face.jpg"))
     ocrInput.DeNoise();
     //ocrInput.Despeckle();
     
-    ocrInput.EnhanceResolution(290);//200
+    ocrInput.EnhanceResolution(200);//200
     //ocrInput.Sharpen();
     
     //ocrInput.Erode();
     //ocrInput.Open();
     ocrInput.ToGrayScale();
     ocrInput.Binarize();
+    ocrInput.SelectTextColor(IronSoftware.Drawing.Color.Black);
     //ocrInput.DeNoise();
     //ocrInput.Sharpen();
     //ocrInput.Dilate();// => bad result
-    ocrInput.Scale(50); //80
+     ocrInput.Scale(34); //30
 
 
     var ocrResult = Ocr.Read(ocrInput);
