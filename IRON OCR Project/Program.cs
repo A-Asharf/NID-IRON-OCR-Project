@@ -5,15 +5,38 @@ namespace IRON_OCR_Project
     {
         public static void Main()
         {
-            var face_IdCard = new IDCardOCR("../../../Images/ID-Face.jpg",24, "arabic_Face_rec", 900, 300, 1003, 800);
-            // scale = 24
+            // var face_IdCard = new IDCardOCR("../../../Images/ID-Face.jpg",24, "arabic_Face_rec", 900, 300, 1003, 800);
+            // // scale = 24
+            //face_IdCard.print_Front_ID_Info(true,true);
 
-            face_IdCard.print_ID_Info();
 
-            var back_IdCard = new IDCardOCR("../../../Images/ID-Back.jpg",80, "arabic_Back_rec", 600, 80, 1025, 580); 
-            //scale = 63
 
-            back_IdCard.print_ID_Info();
+            ////-------------------------------------------- [ Id card Face Name => Done ( ✔️ ) ] -------------------------------------
+            //var face_IdCard_Name = new IDCardOCR("../../../Images/ID-Face.jpg", 80 , "arabic_Face_Name_Section", 900, 330 , 1003, 210);
+            //// best scale = 80
+            //face_IdCard_Name.print_Front_ID_Info(true,true); 
+
+
+            //-------------------------------------------- [ Id card Face Address =>  ( O ) ] -------------------------------------
+            var face_IdCard_Address = new IDCardOCR("../../../Images/ID-Face.jpg", 200, "arabic_Face_Address_Section", 900, 600, 1003, 100);
+            // best scale = 200
+            face_IdCard_Address.print_Front_ID_Info(true,default,default,true);
+
+
+            ////-------------------------------------------- [ Id card Face ID Number =>  Done ( ✔️ ) "You can improve it " ] -------------------------------------
+            //var face_IdCard_IDNum = new IDCardOCR("../../../Images/ID-Face.jpg", 75 , "arabic_Face_IDNum_Section", 900, 985, 1003, 100);
+            //// best scale = 201
+            //face_IdCard_IDNum.print_Front_ID_Info(true, true,true);
+
+
+
+
+
+
+            //var back_IdCard = new IDCardOCR("../../../Images/ID-Back.jpg",83, "arabic_Back_rec", 600, 80, 1025, 580);
+            ////scale = 63 , 80
+            //back_IdCard.print_Back_ID_Info(default,true,true);
+
         }
     }
 }
