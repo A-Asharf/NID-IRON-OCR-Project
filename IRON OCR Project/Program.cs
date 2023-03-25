@@ -1,71 +1,68 @@
-﻿using BitMiracle.LibTiff.Classic;
-using IronOcr;
-
-var Ocr = new IronTesseract();
-Ocr.Language = OcrLanguage.ArabicAlphabetBest;
-Ocr.AddSecondaryLanguage(OcrLanguage.ArabicAlphabetFast);
-Ocr.UseCustomTesseractLanguageFile(@"tessdata_arabic-master\ara-Amiri.traineddata");
-//Ocr.UseCustomTesseractLanguageFile(@"ara.traineddata");
-//Ocr.Configuration.BlackListCharacters = "~`$#^*_}{][|\\@¢©«»°±·×‑–—‘’“”•…′″€™←↑→↓↔⇄⇒∅∼≅≈≠≤≥≪≫⌁⌘○◔◑◕●☐☑☒☕☮☯☺♡⚓✓✰";
-Ocr.Configuration.BlackListCharacters = "\"'؟!÷×؛~ْ^%،<>+=*::!@#$%^&*()_+QWERTYUIOPASDFGHJKL;ZXCVBNM,??qwertyuiopasdfghjklzxcvbnm~`$#^*_}{][|\\@¢©«»°±·×‑–—‘’“”•…′″€™←↑→↓↔⇄⇒∅∼≅≈≠≤≥≪≫⌁⌘○◔◑◕●☐☑☒☕☮☯☺♡⚓✓✰";
-Ocr.Configuration.PageSegmentationMode = TesseractPageSegmentationMode.Auto;
-Ocr.Configuration.ReadBarCodes = false;
-
-
-
-using (var ocrInput = new OcrInput("../../../Images/ID-Face.jpg"))
+﻿
+namespace IRON_OCR_Project
 {
+    public class Program
+    {
+        public static void Main()
+        {
+            var face_IdCard = new IDCardOCR("../../../Images/ID-Face.jpg",24, "arabic_Face_rec", 900, 300, 1003, 800);
+            // scale = 24
 
-    ocrInput.Deskew();
-    ocrInput.DeNoise();
-    //ocrInput.Despeckle();
-    
-    ocrInput.EnhanceResolution(200);//200
-    //ocrInput.Sharpen();
-    
-    //ocrInput.Erode();
-    //ocrInput.Open();
-    ocrInput.ToGrayScale();
-    ocrInput.Binarize();
-    ocrInput.SelectTextColor(IronSoftware.Drawing.Color.Black);
-    //ocrInput.DeNoise();
-    //ocrInput.Sharpen();
-    //ocrInput.Dilate();// => bad result
-     ocrInput.Scale(34); //30
+            face_IdCard.print_ID_Info();
 
+            var back_IdCard = new IDCardOCR("../../../Images/ID-Back.jpg",80, "arabic_Back_rec", 600, 80, 1025, 580); 
+            //scale = 63
 
-    var ocrResult = Ocr.Read(ocrInput);
-
-    Console.WriteLine(ocrResult.Text);
-    ocrResult.SaveAsSearchablePdf("../../../OCR_Result/arabic_Face.pdf");
-    ocrResult.SaveAsTextFile("../../../OCR_Result/arabic_Face.txt");
-    //Check if the file exists
-
+            back_IdCard.print_ID_Info();
+        }
+    }
 }
 
 
-using (var ocrInput = new OcrInput("../../../Images/ID-Back.jpg"))
-{
 
-    //ocrInput.Deskew();
-    //ocrInput.DeNoise();
-    ocrInput.Despeckle();
+//using (var ocrInput = new OcrInput("../../../Images/ID-Face.jpg"))
+//{
+//    //ocrInput.DeNoise();
+//    //ocrInput.Despeckle();
 
-    ocrInput.EnhanceResolution(200); //200
+//    ocrInput.Erode();
+//    //ocrInput.Open();
+//    //ocrInput.ToGrayScale();
+//    ocrInput.Binarize();
+//    //ocrInput.Sharpen();
 
-    ocrInput.Sharpen();
-    ocrInput.Erode();
+//    ocrInput.SelectTextColor(Color.Black);
+//    var rec = new CropRectangle(900,300,1200,800);
+//    //ocrInput.Scale(130);
+//    var newImage = ocrInput.StampCropRectangleAndSaveAs(rec,Color.Red);
+//    ocrInput.Scale(130);//125
+
+//    var ocrResult = Ocr.Read(ocrInput);
+
+//    Console.WriteLine(ocrResult.Text);
+//    Console.WriteLine("-----------------------------------------------------------------------");
+//    Console.WriteLine(newImage[0]);
+//    ocrResult.SaveAsSearchablePdf("../../../OCR_Result/arabic_Face.pdf");
+//    ocrResult.SaveAsTextFile("../../../OCR_Result/arabic_Face.txt");
+
+//}
 
 
-    //ocrInput.Dilate();
-    ocrInput.Scale(130); //130
+//using (var ocrInput = new OcrInput("../../../Images/ID-Back.jpg"))
+//{
+//    ocrInput.DeNoise();
+//    //ocrInput.Despeckle();
+//    ocrInput.Binarize();
+//    ocrInput.Sharpen();
+//    ocrInput.Erode();
+//    ocrInput.Scale(112,true); //130
 
 
-    var ocrResult = Ocr.Read(ocrInput);
+//    var ocrResult = Ocr.Read(ocrInput);
 
-    Console.WriteLine(ocrResult.Text);
-    ocrResult.SaveAsSearchablePdf("../../../OCR_Result/arabic_back.pdf");
-    ocrResult.SaveAsTextFile("../../../OCR_Result/arabic_back.txt");
-    //Check if the file exists
+//    Console.WriteLine(ocrResult.Text);
+//    ocrResult.SaveAsSearchablePdf("../../../OCR_Result/arabic_back.pdf");
+//    ocrResult.SaveAsTextFile("../../../OCR_Result/arabic_back.txt");
+//    //Check if the file exists
 
-}
+//}
