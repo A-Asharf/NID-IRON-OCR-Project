@@ -15,10 +15,10 @@ namespace IRON_OCR_Project
         private int scale;
         private string saveFileWithName;
         IronTesseract Ocr;
-        public IDCardOCR(string imagePath, int scale, string saveFileWithName,int xaxis , int yaxis ,int width , int height)
+        public IDCardOCR(string imagePath, int scale, string saveFileWithName, int xaxis, int yaxis, int width, int height)
         {
             this.x_axis = xaxis;
-            this.y_axis = yaxis; 
+            this.y_axis = yaxis;
             this.width = width;
             this.height = height;
             this.imagePath = imagePath;
@@ -27,8 +27,10 @@ namespace IRON_OCR_Project
             this.Ocr = new IronTesseract();
         }
 
-        private CropRectangle CropRect { 
-            get{
+        private CropRectangle CropRect
+        {
+            get
+            {
                 return new CropRectangle(x_axis, y_axis, width, height);
             }
         }
@@ -40,14 +42,15 @@ namespace IRON_OCR_Project
             this.Ocr.UseCustomTesseractLanguageFile(@"tessdata_arabic-master\ara-Amiri.traineddata");
             this.Ocr.UseCustomTesseractLanguageFile(@"tessdata_arabic-master\ara-Amiri-layer.traineddata");
 
-            //this.Ocr.UseCustomTesseractLanguageFile(@"tessdata_arabic-master\ara-Scheherazade.traineddata");
+            this.Ocr.UseCustomTesseractLanguageFile(@"tessdata_arabic-master\ara-Scheherazade.traineddata");
 
             this.Ocr.Configuration.BlackListCharacters = "1234567890\"'؟!÷×؛~ْ^%،<>+=*::!@#$%^&*()_+QWERTYUIOPASDFGHJKL;ZXCVBNM,??qwertyuiopasdfghjklzxcvbnm~`$#^*_}{][|\\@¢©«»°±·×‑–—‘’“”•…′″€™←↑→↓↔⇄⇒∅∼≅≈≠≤≥≪≫⌁⌘○◔◑◕●☐☑☒☕☮☯☺♡⚓✓✰";
-            this.Ocr.Configuration.PageSegmentationMode = TesseractPageSegmentationMode.Auto;
-            this.Ocr.Configuration.ReadBarCodes = false;
+            this.Ocr.Configuration.PageSegmentationMode = TesseractPageSegmentationMode.SingleWord; // SingleColumn / SparseText
+
+            //  TesseractPageSegmentationMode.SingleWord is the best for the ID_Back
         }
 
-        public void print_Front_ID_Info(bool Binarize = false, bool DeNoise=false, bool Erode = false , bool Sharpen = false)
+        public void print_Front_ID_Info(bool Binarize = false, bool DeNoise = false, bool Erode = false, bool Sharpen = false)
         {
             settingUp_OCR();
 
@@ -66,20 +69,27 @@ namespace IRON_OCR_Project
                 {
                     ocrInput.DeNoise();
                 }
+
+                if (Sharpen)
+                {
+                    ocrInput.Sharpen();
+                }
                 if (Erode)
                 {
                     ocrInput.Erode();
                 }
-            
-              
-                    ocrInput.Sharpen();
-               
 
+                //ocrInput.Contrast();
+                //rgba(43,43,43,255)
+                //rgba(37, 37, 37, 255)
+                //rgba(0,0,0,255)
+               // ocrInput.ReplaceColor(IronSoftware.Drawing.Color.FromArgb(0, 0, 0, 255), IronSoftware.Drawing.Color.Red);
                 ocrInput.SelectTextColor(IronSoftware.Drawing.Color.Black);
+                //ocrInput.SelectTextColor(IronSoftware.Drawing.Color.FromArgb(255,255,255));
                 
-               // var newImage = ocrInput.StampCropRectangleAndSaveAs(rec,IronSoftware.Drawing.Color.Red, saveFileWithName);
+
+                //ocrInput.Scale(scale);
                 ocrInput.StampCropRectangleAndSaveAs(rec, IronSoftware.Drawing.Color.Red, saveFileWithName);
-                ocrInput.Scale(scale);
 
                 var ocrResult = Ocr.Read(ocrInput);
 
@@ -92,7 +102,7 @@ namespace IRON_OCR_Project
 
         }
 
-        public void print_Back_ID_Info(bool Binarize = false, bool DeNoise = false, bool Erode = false)
+        public void print_Back_ID_Info(bool Binarize = false, bool DeNoise = false, bool Erode = false, bool Sharpen = false)
         {
             settingUp_OCR();
 
@@ -111,22 +121,27 @@ namespace IRON_OCR_Project
                 {
                     ocrInput.DeNoise();
                 }
+                
+                if (Sharpen)
+                {
+                    ocrInput.Sharpen();
+                }
                 if (Erode)
                 {
                     ocrInput.Erode();
                 }
-                
 
                 ocrInput.SelectTextColor(IronSoftware.Drawing.Color.Black);
 
-                // var newImage = ocrInput.StampCropRectangleAndSaveAs(rec,IronSoftware.Drawing.Color.Red, saveFileWithName);
+
+                //ocrInput.Scale(scale);
                 ocrInput.StampCropRectangleAndSaveAs(rec, IronSoftware.Drawing.Color.Red, saveFileWithName);
-                ocrInput.Scale(scale);
 
                 var ocrResult = Ocr.Read(ocrInput);
-
+                
                 Console.WriteLine(ocrResult.Text);
                 Console.WriteLine("-----------------------------------------------------------------------");
+              
                 ocrResult.SaveAsSearchablePdf($"../../../OCR_Result/{saveFileWithName}.pdf");
                 ocrResult.SaveAsTextFile($"../../../OCR_Result/{saveFileWithName}.txt");
 
