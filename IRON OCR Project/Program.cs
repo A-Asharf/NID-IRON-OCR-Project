@@ -15,32 +15,32 @@ namespace IRON_OCR_Project
 
             ////-------------------------------------------- [ Id card Face First Name => Done ( ✔️ 'using SingleWord mode') Need to remove extra dots ] -------------------------------------
 
-            //var face_IdCard_FName = new IDCardOCR("../../../Images/ID-Face.jpg", 80, "arabic_Face_FName_Section", 900, 320, 1003, 110);
+            //var face_IdCard_FName = new IDCardOCR("../../../Images/ID-Face.jpg", 0, "arabic_Face_FName_Section", 900, 320, 1003, 110);
             //// best scale = ----
             //face_IdCard_FName.print_Front_ID_Info(false, true, false);
 
             ////-------------------------------------------- [ Id card Face Last Name => Done ( ✔️ 'using SingleWord mode') Need to remove extra hyphen ] -------------------------------------
 
-            //var face_IdCard_LName = new IDCardOCR("../../../Images/ID-Face.jpg", 80, "arabic_Face_LName_Section", 900, 430, 1080, 100);
+            //var face_IdCard_LName = new IDCardOCR("../../../Images/ID-Face.jpg", 0, "arabic_Face_LName_Section", 900, 430, 1080, 100);
             //// best scale = ----
             //face_IdCard_LName.print_Front_ID_Info(false, true, false);
 
             //-------------------------------------------- [ Id card Face Address Part 1 =>  ( O )  ] -------------------------------------
 
-            var face_IdCard_Address_Part1 = new IDCardOCR("../../../Images/ID-Face.jpg", 24, "arabic_Face_Address_Part1_Section", 870, 600, 1080, 100);
-            // best scale = ----
-            face_IdCard_Address_Part1.print_Front_ID_Info(false, true, false, true);
+            //var face_IdCard_Address_Part1 = new IDCardOCR("../../../Images/ID-Face.jpg", 0, "arabic_Face_Address_Part1_Section", 870, 600, 1080, 100);
+            ////best scale = ----
+            //face_IdCard_Address_Part1.print_Front_ID_Info(false, true, false, true);
 
             //-------------------------------------------- [ Id card Face Address Part 2 =>  Done ( ✔️ 'using SingleWord mode') ] -------------------------------------
 
-            //var face_IdCard_Address_Part2 = new IDCardOCR("../../../Images/ID-Face.jpg", 200, "arabic_Face_Address_Part2_Section", 900, 690, 1003, 100);
+            //var face_IdCard_Address_Part2 = new IDCardOCR("../../../Images/ID-Face.jpg", 0, "arabic_Face_Address_Part2_Section", 900, 690, 1003, 100);
             //// best scale = ---
             //face_IdCard_Address_Part2.print_Front_ID_Info(false, true, false);
 
 
             ////-------------------------------------------- [ Id card Face ID Number =>  Done ( ✔️ 'using SingleWord mode') ] -------------------------------------
 
-            //var face_IdCard_IDNum = new IDCardOCR("../../../Images/ID-Face.jpg", 75, "arabic_Face_IDNum_Section", 890, 970, 1050, 130);
+            //var face_IdCard_IDNum = new IDCardOCR("../../../Images/ID-Face.jpg", 0, "arabic_Face_IDNum_Section", 890, 970, 1050, 130);
             //// best scale = ---
             //face_IdCard_IDNum.print_Front_ID_Info(false, true, false);
 
@@ -55,91 +55,38 @@ namespace IRON_OCR_Project
             ////scale = ----
             //back_IdCard.print_Back_ID_Info(default, true, true);
 
-            //var back_IdCard = new IDCardOCR("../../../Images/ID-Back.jpg", 83, "arabic_Back_rec", 590, 280, 1030, 300);
-            ////scale = ----
-            //back_IdCard.print_Back_ID_Info(default, true, true,true);
-
             //-------------------------------------------- [ Id card Back Issue Date =>  Done ( ✔️ 'using SingleWord mode' ) ] -------------------------------------
 
-            //var back_IdCard_IssueDate = new IDCardOCR("../../../Images/ID-Back.jpg", 160, "arabic_Back_IssueDate", 590, 60, 350, 100);
+            //var back_IdCard_IssueDate = new IDCardOCR("../../../Images/ID-Back.jpg", 0, "arabic_Back_IssueDate", 590, 60, 350, 100);
             ////scale = ----
             //back_IdCard_IssueDate.print_Back_ID_Info(true, true);
 
             //-------------------------------------------- [ Id card Back Gender =>  Done ( ✔️ 'using SingleWord mode' ) ] -------------------------------------
 
-            //var back_IdCard_gender = new IDCardOCR("../../../Images/ID-Back.jpg", 53, "arabic_Back_gender", 1450, 360, 180, 100);
+            //var back_IdCard_gender = new IDCardOCR("../../../Images/ID-Back.jpg", 0, "arabic_Back_gender", 1450, 360, 180, 100);
             ////scale = ----
             //back_IdCard_gender.print_Back_ID_Info(true, true);
 
             //-------------------------------------------- [ Id card Back Religion => Done ( ✔️ 'using SingleWord mode' ) ] -------------------------------------
 
-            //var back_IdCard_religion = new IDCardOCR("../../../Images/ID-Back.jpg", 100, "arabic_Back_religion", 1100, 370, 300, 120);
+            //var back_IdCard_religion = new IDCardOCR("../../../Images/ID-Back.jpg", 0, "arabic_Back_religion", 1100, 370, 300, 120);
             ////best scale = ----
             //back_IdCard_religion.print_Back_ID_Info(default, true, true);
 
 
             //-------------------------------------------- [ Id card Back Social Status => Done ( ✔️ 'using SingleWord mode' ) ] -------------------------------------
 
-            //var back_IdCard_social_status = new IDCardOCR("../../../Images/ID-Back.jpg", 100, "arabic_Back_social_status", 650, 365, 300, 120);
+            //var back_IdCard_social_status = new IDCardOCR("../../../Images/ID-Back.jpg", 0, "arabic_Back_social_status", 650, 365, 300, 120);
             ////scale = ----
             //back_IdCard_social_status.print_Back_ID_Info(false, true, true);
 
 
             //-------------------------------------------- [ Id card Back Valid Date =>  Done ( ✔️ 'using SingleWord mode' ) but there is no / or \ ] -------------------------------------
 
-            //var back_IdCard_valid_date = new IDCardOCR("../../../Images/ID-Back.jpg", 80, "arabic_Back_valid_date", 650, 550, 460, 120);
+            //var back_IdCard_valid_date = new IDCardOCR("../../../Images/ID-Back.jpg", 0, "arabic_Back_valid_date", 650, 550, 460, 120);
 
-            ////back_IdCard_valid_date.print_Back_ID_Info(false, true, false, true);
-            //back_IdCard_valid_date.print_Back_ID_Info(false, true, false,true);
+            //back_IdCard_valid_date.print_Back_ID_Info(false, true, false, true);
         }
     }
 }
 
-
-
-//using (var ocrInput = new OcrInput("../../../Images/ID-Face.jpg"))
-//{
-//    //ocrInput.DeNoise();
-//    //ocrInput.Despeckle();
-
-//    ocrInput.Erode();
-//    //ocrInput.Open();
-//    //ocrInput.ToGrayScale();
-//    ocrInput.Binarize();
-//    //ocrInput.Sharpen();
-
-//    ocrInput.SelectTextColor(Color.Black);
-//    var rec = new CropRectangle(900,300,1200,800);
-//    //ocrInput.Scale(130);
-//    var newImage = ocrInput.StampCropRectangleAndSaveAs(rec,Color.Red);
-//    ocrInput.Scale(130);//125
-
-//    var ocrResult = Ocr.Read(ocrInput);
-
-//    Console.WriteLine(ocrResult.Text);
-//    Console.WriteLine("-----------------------------------------------------------------------");
-//    Console.WriteLine(newImage[0]);
-//    ocrResult.SaveAsSearchablePdf("../../../OCR_Result/arabic_Face.pdf");
-//    ocrResult.SaveAsTextFile("../../../OCR_Result/arabic_Face.txt");
-
-//}
-
-
-//using (var ocrInput = new OcrInput("../../../Images/ID-Back.jpg"))
-//{
-//    ocrInput.DeNoise();
-//    //ocrInput.Despeckle();
-//    ocrInput.Binarize();
-//    ocrInput.Sharpen();
-//    ocrInput.Erode();
-//    ocrInput.Scale(112,true); //130
-
-
-//    var ocrResult = Ocr.Read(ocrInput);
-
-//    Console.WriteLine(ocrResult.Text);
-//    ocrResult.SaveAsSearchablePdf("../../../OCR_Result/arabic_back.pdf");
-//    ocrResult.SaveAsTextFile("../../../OCR_Result/arabic_back.txt");
-//    //Check if the file exists
-
-//}
