@@ -37,14 +37,17 @@ namespace IRON_OCR_Project
 
         private void settingUp_OCR()
         {
-            this.Ocr.Language = OcrLanguage.ArabicAlphabetBest;
-            this.Ocr.AddSecondaryLanguage(OcrLanguage.ArabicAlphabetBest);
-            this.Ocr.UseCustomTesseractLanguageFile(@"tessdata_arabic-master\ara-Amiri.traineddata");
-            this.Ocr.UseCustomTesseractLanguageFile(@"tessdata_arabic-master\ara-Amiri-layer.traineddata");
+            //this.Ocr.Language = OcrLanguage.ArabicBest;
 
-            this.Ocr.UseCustomTesseractLanguageFile(@"tessdata_arabic-master\ara-Scheherazade.traineddata");
+            //this.Ocr.AddSecondaryLanguage(@"tessdata_arabic-master\ara-Amiri-layer.traineddata");
+           //this.Ocr.AddSecondaryLanguage(@"tessdata_arabic-master\ara-Amiri.traineddata");
+            //this.Ocr.AddSecondaryLanguage(@"tessdata_arabic-master\ara-Scheherazade.traineddata");
 
-            this.Ocr.Configuration.BlackListCharacters = "1234567890\"'؟!÷×؛~ْ^%،<>+=*::!@#$%^&*()_+QWERTYUIOPASDFGHJKL;ZXCVBNM,??qwertyuiopasdfghjklzxcvbnm~`$#^*_}{][|\\@¢©«»°±·×‑–—‘’“”•…′″€™←↑→↓↔⇄⇒∅∼≅≈≠≤≥≪≫⌁⌘○◔◑◕●☐☑☒☕☮☯☺♡⚓✓✰";
+            //this.Ocr.UseCustomTesseractLanguageFile(@"tessdata_arabic-master\ara-Amiri.traineddata");
+            //this.Ocr.UseCustomTesseractLanguageFile(@"tessdata_arabic-master\ara-Amiri-layer.traineddata");
+           this.Ocr.UseCustomTesseractLanguageFile(@"tessdata_arabic-master\ara-Scheherazade.traineddata");
+
+            this.Ocr.Configuration.BlackListCharacters = ".1234567890\"'؟!÷×؛~ْ^%،<>+=*::!@#$%^&*()_+QWERTYUIOPASDFGHJKL;ZXCVBNM,??qwertyuiopasdfghjklzxcvbnm~`$#^*_}{][|\\@¢©«»°±·×‑–—‘’“”•…′″€™←↑→↓↔⇄⇒∅∼≅≈≠≤≥≪≫⌁⌘○◔◑◕●☐☑☒☕☮☯☺♡⚓✓✰";
             this.Ocr.Configuration.PageSegmentationMode = TesseractPageSegmentationMode.SingleWord; // SingleColumn / SparseText
 
             //  TesseractPageSegmentationMode.SingleWord is the best for the ID_Back
@@ -60,6 +63,9 @@ namespace IRON_OCR_Project
 
                 Bitmap bm = (Bitmap)Bitmap.FromFile(imagePath);
                 ocrInput.AddImage(bm, rec);
+
+                ocrInput.Deskew();
+
 
                 if (Binarize)
                 {

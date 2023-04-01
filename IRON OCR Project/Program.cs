@@ -15,15 +15,15 @@ namespace IRON_OCR_Project
 
             ////-------------------------------------------- [ Id card Face First Name => Done ( ✔️ 'using SingleWord mode') Need to remove extra dots ] -------------------------------------
 
-            //var face_IdCard_FName = new IDCardOCR("../../../Images/ID-Face.jpg", 0, "arabic_Face_FName_Section", 900, 320, 1003, 110);
+            //var face_IdCard_FName = new IDCardOCR("../../../Images/ID-Face.jpg", 0, "arabic_Face_FName_Section", 870, 320, 1080, 110);
             //// best scale = ----
-            //face_IdCard_FName.print_Front_ID_Info(false, true, false);
+            //face_IdCard_FName.print_Front_ID_Info(false, true, false, true);
 
             ////-------------------------------------------- [ Id card Face Last Name => Done ( ✔️ 'using SingleWord mode') Need to remove extra hyphen ] -------------------------------------
 
             //var face_IdCard_LName = new IDCardOCR("../../../Images/ID-Face.jpg", 0, "arabic_Face_LName_Section", 900, 430, 1080, 100);
             //// best scale = ----
-            //face_IdCard_LName.print_Front_ID_Info(false, true, false);
+            //face_IdCard_LName.print_Front_ID_Info(false, true, false, true);
 
             //-------------------------------------------- [ Id card Face Address Part 1 =>  ( O )  ] -------------------------------------
 
@@ -44,6 +44,7 @@ namespace IRON_OCR_Project
             //// best scale = ---
             //face_IdCard_IDNum.print_Front_ID_Info(false, true, false);
 
+            // face_IdCard_IDNum.print_Front_ID_Info(false, true,true);  Not correct
 
 
             /// *************************************************************************************************************************************************
@@ -57,9 +58,21 @@ namespace IRON_OCR_Project
 
             //-------------------------------------------- [ Id card Back Issue Date =>  Done ( ✔️ 'using SingleWord mode' ) ] -------------------------------------
 
-            //var back_IdCard_IssueDate = new IDCardOCR("../../../Images/ID-Back.jpg", 0, "arabic_Back_IssueDate", 590, 60, 350, 100);
+            //var back_IdCard_IssueDate = new IDCardOCR("../../../Images/ID-Back.jpg",0, "arabic_Back_IssueDate", 590, 60, 350, 100);
             ////scale = ----
             //back_IdCard_IssueDate.print_Back_ID_Info(true, true);
+
+            //-------------------------------------------- [ Id card Back Job Part 1 =>   Done ( ✔️ 'using SingleWord mode' ) ] -------------------------------------
+
+            //var back_IdCard_Job_Part1 = new IDCardOCR("../../../Images/ID-Back.jpg", 0, "arabic_Back_Job_Part1", 990, 160, 650, 100);
+            ////scale = ----
+            //back_IdCard_Job_Part1.print_Back_ID_Info(default,true, true);
+
+            //-------------------------------------------- [ Id card Back Job Part 2 =>   Done ( ✔️ 'using SingleWord mode' ) ] -------------------------------------
+
+            //var back_IdCard_Job_Part2 = new IDCardOCR("../../../Images/ID-Back.jpg", 0, "arabic_Back_Job_Part2", 650, 260, 980, 100);
+            ////scale = ----
+            //back_IdCard_Job_Part2.print_Back_ID_Info(default, true, true);
 
             //-------------------------------------------- [ Id card Back Gender =>  Done ( ✔️ 'using SingleWord mode' ) ] -------------------------------------
 
@@ -80,12 +93,19 @@ namespace IRON_OCR_Project
             ////scale = ----
             //back_IdCard_social_status.print_Back_ID_Info(false, true, true);
 
+            //-------------------------------------------- [ Id card Back Husband =>  ( O ) ] -------------------------------------
+
+            var back_IdCard_husband = new IDCardOCR("../../../Images/ID-Back.jpg", 0, "arabic_Back_husband", 650, 460, 1000, 100);
+            ////scale = ----
+            back_IdCard_husband.print_Back_ID_Info(false, true, true);
+
+
 
             //-------------------------------------------- [ Id card Back Valid Date =>  Done ( ✔️ 'using SingleWord mode' ) but there is no / or \ ] -------------------------------------
 
-            //var back_IdCard_valid_date = new IDCardOCR("../../../Images/ID-Back.jpg", 0, "arabic_Back_valid_date", 650, 550, 460, 120);
-
+            //var back_IdCard_valid_date = new IDCardOCR("../../../Images/ID-Back.jpg", 0, "arabic_Back_valid_date", 550, 550, 550, 120);
             //back_IdCard_valid_date.print_Back_ID_Info(false, true, false, true);
+
         }
     }
 }
