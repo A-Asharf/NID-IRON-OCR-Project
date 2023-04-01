@@ -6,7 +6,7 @@ namespace IRON_OCR_Project
         public static void Main()
         {
 
-            string Front_ID_Card_Path = "ID-Face.jpg";
+            string Front_ID_Card_Path = "ID-Face-New.jpeg";
             string Back_ID_Card_Path = "";
 
             //var face_IdCard = new IDCardOCR("../../../Images/ID-Face.jpg", 24, "arabic_Face_rec", 900, 300, 1003, 800);
@@ -19,9 +19,13 @@ namespace IRON_OCR_Project
 
             ////-------------------------------------------- [ Id card Face First Name => Done ( ✔️ 'using SingleWord mode') Need to remove extra dots ] -------------------------------------
 
-            var face_IdCard_FName = new IDCardOCR($"../../../Images/{Front_ID_Card_Path}", 0, "arabic_Face_FName_Section", 870, 320, 1080, 110);
+            var face_IdCard_FName = new AdvancedOCR($"../../../Images/{Front_ID_Card_Path}", 0, "arabic_Face_FName_Section", 870, 320, 1080, 110);
             // best scale = ----
             face_IdCard_FName.print_Front_ID_Info(false, true, false, true);
+
+
+
+
 
             ////-------------------------------------------- [ Id card Face Last Name => Done ( ✔️ 'using SingleWord mode') Need to remove extra hyphen ] -------------------------------------
 
