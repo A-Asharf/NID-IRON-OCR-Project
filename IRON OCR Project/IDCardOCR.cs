@@ -45,10 +45,10 @@ namespace IRON_OCR_Project
 
             //this.Ocr.UseCustomTesseractLanguageFile(@"tessdata_arabic-master\ara-Amiri.traineddata");
             //this.Ocr.UseCustomTesseractLanguageFile(@"tessdata_arabic-master\ara-Amiri-layer.traineddata");
-           this.Ocr.UseCustomTesseractLanguageFile(@"tessdata_arabic-master\ara-Scheherazade.traineddata");
+            this.Ocr.UseCustomTesseractLanguageFile(@"tessdata_arabic-master\ara-Scheherazade.traineddata");
 
-            this.Ocr.Configuration.BlackListCharacters = ".1234567890\"'؟!÷×؛~ْ^%،<>+=*::!@#$%^&*()_+QWERTYUIOPASDFGHJKL;ZXCVBNM,??qwertyuiopasdfghjklzxcvbnm~`$#^*_}{][|\\@¢©«»°±·×‑–—‘’“”•…′″€™←↑→↓↔⇄⇒∅∼≅≈≠≤≥≪≫⌁⌘○◔◑◕●☐☑☒☕☮☯☺♡⚓✓✰";
-            this.Ocr.Configuration.PageSegmentationMode = TesseractPageSegmentationMode.SingleWord; // SingleColumn / SparseText
+            this.Ocr.Configuration.BlackListCharacters = "1234567890\"'؟!÷×؛~ْ^%،<>+=*::!@#$%^&*()_+QWERTYUIOPASDFGHJKL;ZXCVBNM,??qwertyuiopasdfghjklzxcvbnm~`$#^*_}{][|\\@¢©«»°±·×‑–—‘’“”•…′″€™←↑→↓↔⇄⇒∅∼≅≈≠≤≥≪≫⌁⌘○◔◑◕●☐☑☒☕☮☯☺♡⚓✓✰";
+            this.Ocr.Configuration.PageSegmentationMode = TesseractPageSegmentationMode.RawLine; // SingleColumn / SparseText
 
             //  TesseractPageSegmentationMode.SingleWord is the best for the ID_Back
         }
@@ -56,7 +56,7 @@ namespace IRON_OCR_Project
         public void print_Front_ID_Info(bool Binarize = false, bool DeNoise = false, bool Erode = false, bool Sharpen = false)
         {
             settingUp_OCR();
-
+            
             using (var ocrInput = new OcrInput())
             {
                 CropRectangle rec = this.CropRect;
@@ -64,8 +64,7 @@ namespace IRON_OCR_Project
                 Bitmap bm = (Bitmap)Bitmap.FromFile(imagePath);
                 ocrInput.AddImage(bm, rec);
 
-                ocrInput.Deskew();
-
+           
 
                 if (Binarize)
                 {
